@@ -1,0 +1,32 @@
+{
+    "logfile": "test-prime.log.txt",
+    "loglevel": "INFO",
+    "endtime": 1000.0,
+    "max_id": 100,
+    "frac_repair": 0.5,
+    "server":{
+        "fail_rate_distr": "EXPONENTIAL",
+        "fail_rate_param": [100],
+        "up_rate_distr": "EXPONENTIAL",
+        "up_rate_param": [100],
+        "shutdown_rate_distr": "GAUSSIAN",
+        "shutdown_rate_param": [10.0, 2.0]       
+    },
+    "repair":{
+        "class":"MBRrepair",
+        "activate_rate_distr": "EXPONENTIAL",
+        "activate_rate_param": [2.0],
+        "activate_cost"      : 10.0,
+        "transfer_rate_distr": "EXPONENTIAL",
+        "transfer_rate_param": [5.0],
+        "transfer_cost"      : 0.1,
+        "inst_failure_distr" : "EXPONETIAL",
+        "inst_failure_param" : [1]
+    },
+    "chunk":{
+        "size": 2147483648,
+        "recovery":10,
+        "repair":15,
+        "total":30
+    }
+}
