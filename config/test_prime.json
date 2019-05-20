@@ -1,32 +1,34 @@
 {
-    "logfile": "test-prime.log.txt",
-    "loglevel": "INFO",
-    "endtime": 1000.0,
+    "logfile": "test_prime.log.txt",
+    "loglevel": "DEBUG",
+    "endtime": 10000.0,
     "max_id": 100,
     "frac_repair": 0.5,
     "server":{
         "fail_rate_distr": "EXPONENTIAL",
-        "fail_rate_param": [100],
+        "fail_rate_param": [0.001111],
         "up_rate_distr": "EXPONENTIAL",
-        "up_rate_param": [100],
-        "shutdown_rate_distr": "GAUSSIAN",
-        "shutdown_rate_param": [10.0, 2.0]       
+        "up_rate_param": [0.0001],
+        "shutdown_rate_distr": "EXPONENTIAL",
+        "shutdown_rate_param": [0.01]       
     },
     "repair":{
         "class":"MBRrepair",
         "activate_rate_distr": "EXPONENTIAL",
-        "activate_rate_param": [2.0],
+        "activate_rate_param": [0.1],
         "activate_cost"      : 10.0,
+        "activate_ctrl_rule" : "Constant",
+        "activate_ctrl_param": 1.0,
         "transfer_rate_distr": "EXPONENTIAL",
-        "transfer_rate_param": [5.0],
-        "transfer_cost"      : 0.1,
-        "inst_failure_distr" : "EXPONETIAL",
-        "inst_failure_param" : [1]
+        "transfer_rate_param": [20],
+        "transfer_cost"      : 10e-10
     },
     "chunk":{
         "size": 2147483648,
         "recovery":10,
         "repair":15,
-        "total":30
+        "total":30,
+        "alpha": 214748365,
+        "beta": 13854734
     }
 }
